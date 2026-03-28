@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(netstat -ano)",
+      "Bash(findstr ':3000 :3001 :5173 :8080')",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src=no --import-alias=\"@/*\" --use-npm)",
+      "Read(//e/coding antics/Digital Tools/**)",
+      "Bash(npx create-next-app@latest scope-creep-calculator --typescript --tailwind --eslint --app --src=no --import-alias=\"@/*\" --use-npm)",
+      "Bash(npm init:*)",
+      "Bash(npm pkg:*)",
+      "Bash(npm install:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm ls:*)",
+      "Bash(cmd //c \"rename \"\"Tool #1\"\" Tool-1\")",
+      "Read(//e//**)",
+      "Bash(mv \"E:/coding antics/Digital Tools/Tool #1\" \"E:/coding antics/Digital Tools/Tool-1\")",
+      "Bash(powershell -Command \"Rename-Item -Path ''E:\\\\coding antics\\\\Digital Tools\\\\Tool #1'' -NewName ''Tool-1'' -Force\")",
+      "Bash(cp -r \"E:/coding antics/Digital Tools/Tool #1/app\" \"E:/coding antics/Digital Tools/Tool-1-temp/\")",
+      "Bash(cp -r \"E:/coding antics/Digital Tools/Tool #1/components\" \"E:/coding antics/Digital Tools/Tool-1-temp/\")",
+      "Bash(mkdir -p \"E:/coding antics/Digital Tools/Tool-1-temp/.claude\")",
+      "Bash(cp \"E:/coding antics/Digital Tools/Tool #1/.claude/launch.json\" \"E:/coding antics/Digital Tools/Tool-1-temp/.claude/\")",
+      "Bash(powershell -Command \"Rename-Item -Path ''E:\\\\coding antics\\\\Digital Tools\\\\Tool-1-temp'' -NewName ''Tool-1''\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/calculator)",
+      "Bash(mkdir -p app)",
+      "Bash(mv globals.css layout.tsx page.tsx calculator scope-tracker app/)",
+      "Bash(findstr \":3000\")",
+      "Bash(taskkill //PID 6260 //F)",
+      "Bash(npm uninstall:*)",
+      "Bash(taskkill //F //IM git.exe)",
+      "Bash(del \"E:\\\\coding antics\\\\Digital Tools\\\\Tool #1\\\\.git\\\\index.lock\")"
+    ]
+  }
+}
