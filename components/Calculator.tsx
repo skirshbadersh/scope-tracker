@@ -27,30 +27,13 @@ export default function Calculator() {
   const [unbilledPct, setUnbilledPct] = useState(20);
   const [numClients, setNumClients] = useState("");
 
-  const [showEmailGate, setShowEmailGate] = useState(false);
   const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
   const [results, setResults] = useState<Results | null>(null);
 
   function handleCalculate(e: React.FormEvent) {
     e.preventDefault();
-    setShowEmailGate(true);
-  }
 
-  function handleEmailSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-
-    // Capture email
-    const leads = JSON.parse(localStorage.getItem("waitlist_emails") || "[]");
-    leads.push({
-      email,
-      tag: "calculator-lead",
-      timestamp: new Date().toISOString(),
-    });
-    localStorage.setItem("waitlist_emails", JSON.stringify(leads));
-    console.log("[calculator-lead] Email captured:", email);
-
-    // Calculate results
     const rate = parseFloat(hourlyRate) || 75;
     const hours = parseFloat(hoursPerWeek) || 40;
     const pct = unbilledPct;
@@ -70,7 +53,21 @@ export default function Calculator() {
       hourlyRate: rate,
       unbilledPct: pct,
     });
-    setShowEmailGate(false);
+  }
+
+  function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email) return;
+
+    const leads = JSON.parse(localStorage.getItem("waitlist_emails") || "[]");
+    leads.push({
+      email,
+      tag: "calculator-lead",
+      timestamp: new Date().toISOString(),
+    });
+    localStorage.setItem("waitlist_emails", JSON.stringify(leads));
+    console.log("[calculator-lead] Email captured:", email);
+    setSubscribed(true);
   }
 
   // Results view
@@ -121,8 +118,40 @@ export default function Calculator() {
           every single month.
         </div>
 
+        {/* Optional email capture */}
+        <div className="mt-8 rounded-lg border border-border p-6 text-center">
+          {subscribed ? (
+            <div>
+              <p className="font-semibold text-success">You&apos;re subscribed!</p>
+              <p className="mt-1 text-sm text-ink-light">
+                Check your inbox for scope creep prevention tips.
+              </p>
+            </div>
+          ) : (
+            <>
+              <p className="text-sm font-medium text-ink">
+                Get weekly tips on preventing scope creep
+              </p>
+              <form
+                onSubmit={handleSubscribe}
+                className="mx-auto mt-3 flex max-w-md gap-3 sm:flex-row flex-col"
+              >
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@email.com"
+                  className="flex-1 rounded-md border border-border px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                />
+                <Button type="submit">Subscribe</Button>
+              </form>
+            </>
+          )}
+        </div>
+
         {/* CTA to Scope Tracker */}
-        <div className="mt-12 rounded-lg border border-accent/20 bg-accent/5 p-8 text-center">
+        <div className="mt-8 rounded-lg border border-accent/20 bg-accent/5 p-8 text-center">
           <h2 className="text-xl font-bold">Stop Losing Money to Unbilled Work</h2>
           <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-ink-light">
             We&apos;re building a tool that tracks every revision, enforces scope boundaries
@@ -138,6 +167,7 @@ export default function Calculator() {
           onClick={() => {
             setResults(null);
             setEmail("");
+            setSubscribed(false);
           }}
           className="mx-auto mt-8 block text-sm text-ink-light underline hover:text-ink"
         >
@@ -223,39 +253,6 @@ export default function Calculator() {
           Calculate My Losses
         </Button>
       </form>
-
-      {/* Email gate modal */}
-      {showEmailGate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 p-4">
-          <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-xl">
-            <h3 className="text-lg font-bold">See Your Results</h3>
-            <p className="mt-2 text-sm text-ink-light">
-              We&apos;ll send your personalized scope creep report — plus tips to
-              stop the bleeding.
-            </p>
-            <form onSubmit={handleEmailSubmit} className="mt-6 space-y-4">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@email.com"
-                autoFocus
-                className="w-full rounded-md border border-border px-4 py-3 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-              />
-              <Button type="submit" fullWidth>
-                Show My Results
-              </Button>
-            </form>
-            <button
-              onClick={() => setShowEmailGate(false)}
-              className="mx-auto mt-4 block text-sm text-ink-light underline hover:text-ink"
-            >
-              Go back
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
