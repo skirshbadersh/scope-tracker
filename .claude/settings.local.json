@@ -27,7 +27,11 @@
       "Bash(taskkill //PID 6260 //F)",
       "Bash(npm uninstall:*)",
       "Bash(taskkill //F //IM git.exe)",
-      "Bash(del \"E:\\\\coding antics\\\\Digital Tools\\\\Tool #1\\\\.git\\\\index.lock\")"
+      "Bash(del \"E:\\\\coding antics\\\\Digital Tools\\\\Tool #1\\\\.git\\\\index.lock\")",
+      "Bash(gh repo:*)",
+      "Bash(where gh:*)",
+      "Bash(winget install:*)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth status)"
     ]
   }
 }
