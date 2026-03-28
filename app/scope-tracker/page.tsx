@@ -143,8 +143,59 @@ export default function ScopeTrackerPage() {
         </div>
       </section>
 
-      {/* What You Get */}
+      {/* Why Spreadsheets and Emails Fail */}
       <section className="bg-surface-2">
+        <div className="mx-auto max-w-[720px] px-6 py-16 sm:py-20">
+          <h2 className="text-center text-2xl font-bold sm:text-3xl">
+            Why Spreadsheets and Emails Fail
+          </h2>
+          <div className="mt-10 space-y-8">
+            <div>
+              <p className="text-lg font-semibold">
+                Your client has no idea they&apos;re on revision 7.
+              </p>
+              <p className="mt-1 text-sm text-ink-light">
+                You track it in your head or a spreadsheet. They track nothing. The tool
+                shows both of you the same revision count in real time — no more &quot;I
+                didn&apos;t realize I&apos;d asked for that many changes.&quot;
+              </p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                Nothing stops work from starting before it&apos;s approved.
+              </p>
+              <p className="mt-1 text-sm text-ink-light">
+                Right now, a client says &quot;can you also...&quot; and you just do it.
+                The tool requires them to approve the cost of out-of-scope work before you
+                touch it. No approval, no work.
+              </p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                You can&apos;t prove what was agreed to 3 months ago.
+              </p>
+              <p className="mt-1 text-sm text-ink-light">
+                Email threads get buried. The tool keeps a timestamped record of your
+                original scope, every revision, and every change request — the full paper
+                trail if a client disputes what they owe.
+              </p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                You have no idea how much free work you actually did last year.
+              </p>
+              <p className="mt-1 text-sm text-ink-light">
+                The dashboard tracks every billed change order. After 3 months, you see
+                the exact dollar amount the tool saved you — most freelancers are shocked
+                by the number.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What You Get */}
+      <section>
         <div className="mx-auto max-w-[720px] px-6 py-16 sm:py-20">
           <h2 className="text-center text-2xl font-bold sm:text-3xl">
             What You Get
